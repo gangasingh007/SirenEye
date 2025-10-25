@@ -20,7 +20,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.post("/auth/register", validateUserRegistration,async(req, res) => {
+app.post("/auth/register",async(req, res) => {
   try {
     const { firstName, lastName, email, password } = req.body;
     if (!email || !password) {
@@ -47,8 +47,6 @@ app.post("/auth/register", validateUserRegistration,async(req, res) => {
     
     res.status(201).json({
         token : token,
-        fullName: `${result.firstName} ${result.lastName}`,
-        email: result.email
     });
 
   } catch (error) {
@@ -58,16 +56,16 @@ app.post("/auth/register", validateUserRegistration,async(req, res) => {
 });
 
 
-app.post("/auth/login", validateUserLogin,(req, res) => {
+app.post("/auth/login",async (req, res) => {
   try {
   const {email , password} = req.body;
 
-  const isExistingUser = User.findOne({email : email});
+  const isExistingUser = await User.findOne({email : email});
   if (!isExistingUser) {
     return res.status(400).json({message: "User does not exist"});
   }
 
-  const isPasswordValid = bcrypt.compare(password, isExistingUser.hash);
+  const isPasswordValid =await bcrypt.compare(password, isExistingUser.password);
   if (!isPasswordValid) {
     return res.status(400).json({message: "Invalid password"});
   }
@@ -76,8 +74,6 @@ app.post("/auth/login", validateUserLogin,(req, res) => {
 
   res.status(200).json({
     token: token,
-    fullName: `${isExistingUser.firstName} ${isExistingUser.lastname}`,
-    email: isExistingUser.email
     });
   } catch (error) {
     res.status(500).json({message: "Error logging in user"});  

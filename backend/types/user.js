@@ -12,7 +12,7 @@ export const validateUserRegistration = (req,res,next) => {
   if (result.success) {
     next()
   } else {
-    return res.status(400).json({message: "Invalid request data", error: result.error});
+    return res.json({message: "Invalid request data", error: result.error});
   } 
 };
 
@@ -21,11 +21,11 @@ const userLoginSchema = zod.object({
   password: zod.string().min(6).max(100),
 });
 
-export const validateUserLogin = (next,req,res) => {
+export const validateUserLogin = (req,res,next) => {
   const result = userLoginSchema.safeParse(req.body);
   if (result.success) {
     next();
   } else {
-    return res.status(400).json({message: "Invalid request data", error: result.error});
+    return res.json({message: "Invalid request data", error: result.error});
   }
 };
