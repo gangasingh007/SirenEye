@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-green-400  shadow-md">
+      <nav className="bg-white shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
@@ -44,12 +44,13 @@ const Navbar = () => {
             </div>
 
             <div className="flex items-center space-x-4">
+              {/* Donate Button - Opens Modal */}
               <button
                 onClick={() => setShowDonation(true)}
                 className="flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg transition-colors duration-200"
               >
-                <Heart className="h-4 w-4 text-gray-700"  />
-                <span className="text-gray-700 hidden sm:inline">Donate</span>
+                <Heart className="h-4 w-4 text-black" />
+                <span className="hidden sm:inline text-black">Donate</span>
               </button>
 
               {token ? (
@@ -86,7 +87,13 @@ const Navbar = () => {
         </div>
       </nav>
 
-      <DonationModal isOpen={showDonation} onClose={() => setShowDonation(false)} />
+      {/* Modal Component - Controlled by showDonation state */}
+      {showDonation && (
+        <DonationModal 
+          isOpen={showDonation} 
+          onClose={() => setShowDonation(false)} 
+        />
+      )}
     </>
   )
 }

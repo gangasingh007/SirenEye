@@ -3,6 +3,7 @@ import { FileText, Activity, TrendingUp } from 'lucide-react'
 import Navbar from '../components/common/Navbar'
 import Card from '../components/common/Card'
 import { useAuth } from '../hooks/useAuth'
+import DonationModal from '../components/donation/DonationModal'
 
 const Dashboard = () => {
   const { user } = useAuth()
@@ -98,6 +99,7 @@ const Dashboard = () => {
               </div>
             </div>
           </Card>
+          <DonationModal />
         </div>
       </div>
     </div>

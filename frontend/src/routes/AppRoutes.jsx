@@ -6,7 +6,6 @@ import Register from '../pages/Register'
 import Dashboard from '../pages/Dashboard'
 import Triage from '../pages/Triage'
 import Feed from '../pages/Feed'
-import DonationModal from '../components/donation/DonationModal'
 
 const AppRoutes = () => {
   return (
@@ -19,7 +18,6 @@ const AppRoutes = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/triage" element={<Triage />} />
         <Route path="/feed" element={<Feed />} />
-        <Route path="/donation" element={<DonationModal />} />
       </Route>
       
       <Route path="*" element={<Navigate to="/" replace />} />
