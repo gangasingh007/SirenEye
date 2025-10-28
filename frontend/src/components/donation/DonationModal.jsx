@@ -456,9 +456,9 @@ const DonationModal = ({ isOpen, onClose }) => {
                     <Check className="h-5 w-5 text-blue-600" />
                   </div>
                   <div className="text-sm text-gray-800">
-                    <p className="font-semibold mb-1 text-blue-900">🔒 Secure Mock Payment</p>
+                    <p className="font-semibold mb-1 text-blue-900">🔒 Secure Payment</p>
                     <p className="leading-relaxed">
-                      This is a demonstration form. No actual payment will be processed, and no real card information is stored or transmitted.
+                      {/* This is a demonstration form. No actual payment will be processed, and no real card information is stored or transmitted. */}
                     </p>
                   </div>
                 </div>
